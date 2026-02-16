@@ -1,0 +1,19 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n-hackathon
+    ports:
+      - "5678:5678"
+    environment:
+      - GENERIC_TIMEZONE=Europe/Stockholm
+      - TZ=Europe/Stockholm
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_IMPORT_WORKFLOW=true
+      - N8N_IMPORT_WORKFLOW_PATH=/import/workflows
+    volumes:
+      - ./workflows:/import/workflows         # Local folder mapped into container
+      - n8n_data:/home/node/.n8n              # Persistent n8n storage
+    restart: unless-stopped
+
+volumes:
+  n8n_data:

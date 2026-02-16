@@ -1,0 +1,82 @@
+{
+  "name": "ai_agent",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -240,
+        -80
+      ],
+      "id": "6a5d9a6c-c4ff-469e-9125-6cc7ba49a9cf",
+      "name": "When chat message received",
+      "webhookId": "9d151fb5-f021-44db-9294-3c309a900a7e"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -32,
+        -80
+      ],
+      "id": "fcf04319-9d48-4c05-a6ef-f9a017cd4395",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        112
+      ],
+      "id": "f3d9b73c-60e9-4044-9298-dc54a11a07ad",
+      "name": "OpenRouter Chat Model"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "7d0f8e7a-fbc2-411a-9d39-6473ffcae4ea",
+  "meta": {
+    "instanceId": "b8c9333ff035febc7c4d225867710098318b4b07c0684883fdc2b0a4a133312e"
+  },
+  "id": "HvVgxHMhhwGwzHgt",
+  "tags": []
+}
